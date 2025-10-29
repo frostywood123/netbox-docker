@@ -10,7 +10,7 @@ services:
     healthcheck:
       test: curl -f http://localhost:8080/login/ || exit 1
       start_period: 90s
-      timeout: 300s
+      timeout: 3s
       interval: 15s
     volumes:
 #      - ./configuration:/etc/netbox/config:z,ro
@@ -18,7 +18,7 @@ services:
       - netbox-reports-files:/opt/netbox/netbox/reports:rw
       - netbox-scripts-files:/opt/netbox/netbox/scripts:rw
     ports:
-      - 8007:8080
+      - 8005:8080
   netbox-worker:
     <<: *netbox
     depends_on:
